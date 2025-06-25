@@ -18,9 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  TextRevealCard,
-  TextRevealCardDescription,
-  TextRevealCardTitle,
+  TextRevealCard
 } from "@/components/ui/text-reveal-card";
 
 export default function Home() {

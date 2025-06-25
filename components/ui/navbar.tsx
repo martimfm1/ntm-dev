@@ -69,7 +69,7 @@ export default function Navbar() {
         ) : (
           <StarBorder as="button" color="white" speed="5s">
             <Button variant="signin">
-              <Link href="/api/discord/login" className="text-slate-950 font-medium">Sign In</Link>
+              <a href="/soon" className="text-slate-950 font-medium">Sign In</a>
             </Button>
           </StarBorder>
         )}
