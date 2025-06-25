@@ -1,7 +1,4 @@
-/*
-	Installed from https://reactbits.dev/ts/tailwind/
-*/
-"use client";
+'use client'
 
 import React, { useEffect, useRef } from "react";
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";

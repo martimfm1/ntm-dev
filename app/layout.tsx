@@ -1,5 +1,5 @@
-import { head } from "motion/react-client";
-import { Inter, Poppins } from "next/font/google";
+import Particles from "@/components/Particles/Particles";
+import { Inter, Space_Grotesk } from "next/font/google";
 
 export const metadata = {
   title: 'NTM DEV | Quality Bots',
@@ -9,15 +9,39 @@ export const metadata = {
   },
 }
 
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const grotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-grotesk',
+  display: 'swap',
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${grotesk.variable}`}>
       <body className="bg-stone-950">
-        {children}
+          <div className="fixed top-0 left-0 w-full h-[140vh] -z-10">
+            <Particles
+              particleColors={["#ffffff", "#ffffff"]}
+              particleCount={900}
+              particleSpread={50}
+              speed={0.1}
+              particleBaseSize={100}
+              moveParticlesOnHover={false}
+              alphaParticles={true}
+              disableRotation={false}
+            />
+          </div>
+          {children}
       </body>
     </html>
   )
