@@ -1,14 +1,82 @@
 "use client";
 import { TextLoop } from "@/components/ui/text-loop";
+import { Cursor } from "@/components/ui/cursor";
+import { AnimatePresence, motion } from "motion/react";
+import { PlusIcon } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ClickSpark from "@/components/ClickSpark/ClickSpark";
 import { InView } from "@/components/ui/in-view";
 import "./styles/globals.css";
-import { Prices } from "@/components/cards";
+import { Tilt } from "@/components/ui/tilt";
+import Link from "next/link";
+import { Cards } from "@/components/ui/cards";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  TextRevealCard,
+  TextRevealCardDescription,
+  TextRevealCardTitle,
+} from "@/components/ui/text-reveal-card";
 
 export default function Home() {
+  const [isHovering, setIsHovering] = useState(false);
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  const handlePositionChange = (x: number, y: number) => {
+    if (targetRef.current) {
+      const rect = targetRef.current.getBoundingClientRect();
+      const isInside =
+        x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+      setIsHovering(isInside);
+    }
+  };
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
+      <Cursor
+        attachToParent
+        variants={{
+          initial: { scale: 0.3, opacity: 0 },
+          animate: { scale: 1, opacity: 1 },
+          exit: { scale: 0.3, opacity: 0 },
+        }}
+        springConfig={{
+          bounce: 0.001,
+        }}
+        transition={{
+          ease: "easeInOut",
+          duration: 0.15,
+        }}
+        onPositionChange={handlePositionChange}
+      >
+        <motion.div
+          animate={{
+            width: isHovering ? 80 : 16,
+            height: isHovering ? 32 : 16,
+          }}
+          className="flex items-center justify-center rounded-[24px] bg-gray-500/40 backdrop-blur-md dark:bg-gray-300/40"
+        >
+          <AnimatePresence>
+            {isHovering ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.6 }}
+                className="inline-flex w-full items-center justify-center"
+              >
+                <div className="inline-flex items-center text-sm text-white dark:text-black">
+                  More <PlusIcon className="ml-1 h-4 w-4" />
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </motion.div>
+      </Cursor>
+
       <ClickSpark
         sparkColor="#fff"
         sparkSize={10}
@@ -85,22 +153,83 @@ export default function Home() {
           viewOptions={{ margin: "0px 0px -200px 0px" }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <Prices />
-        </InView>
-        <InView
-          variants={{
-            hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
-            visible: { opacity: 1, y: 0, filter: "blur(0px)" },
-          }}
-          viewOptions={{ margin: "0px 0px -200px 0px" }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        >
-          <section id="reviews" className="flex justify-center p-20 gap-6">
+          <section
+            id="bots"
+            className="flex justify-center p-20 gap-6 relative"
+          >
             <div className="text-amber-50 text-center">
-              <h2 className="titulo mb-2.5 text-3xl">See our reviews</h2>
-              <h4 className="mb-6 text-lg">
-                Below you can check the reviews of some of our customers.{" "}
+              <h2 className="titulo mb-2.5 text-3xl">Discover our BOTs</h2>
+              <h4 className="mb-15 text-lg">
+                Below you can see our bots and choose the one that best suits
+                your needs. <br />
+                You can also choose one of our plans or products in{" "}
+                <Button className="text-amber-50 text-lg p-0" variant="link">
+                  <Link href="/products" className="cursor-none">
+                    products
+                  </Link>
+                </Button>
               </h4>
+
+              <div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+                ref={targetRef}
+              >
+                {[
+                  {
+                    title: "SUGGESTION",
+                    image: "./suggestion.png",
+                    description:
+                      "Ideal for efficiently managing suggestions and facilitating decision-making.",
+                    extra: "1€ /month *",
+                    link: "https://discord.com/channels/1290074291047632919/1312913068438716456",
+                  },
+                  {
+                    title: "CUSTOM COMMANDS",
+                    image: "./custom-commands.png",
+                    description:
+                      "For those who want to create exclusive custom commands, offering more control and flexibility.",
+                    extra: "3€ /month *",
+                    link: "https://discord.com/channels/1290074291047632919/1312913249758351370",
+                  },
+                  {
+                    title: "ANTI-LINKS",
+                    image: "./anti-links.png",
+                    description:
+                      "Protect your server from unwanted and potentially dangerous links, maintaining security and integrity.",
+                    extra: "2€ /month *",
+                    link: "https://discord.com/channels/1290074291047632919/1312904181446738123",
+                  },
+                ].map((card, i) => (
+                  <Link
+                    key={i}
+                    href={card.link}
+                    className="hover:scale-[1.01] transition-transform duration-200 cursor-none"
+                  >
+                    <Tilt rotationFactor={8} isRevese>
+                      <div className="border rounded-2xl h-82 flex max-w-[270px] flex-col overflow-hidden border-neutral-400/50 bg-transparent dark:border-zinc-50/10 dark:bg-zinc-900">
+                        <div className="rounded-full flex justify-center items-center mt-4 mb-2 h-32">
+                          <img
+                            src={card.image}
+                            alt={card.title}
+                            className="w-36"
+                          />
+                        </div>
+                        <div className="p-2 text-center">
+                          <h1 className="titulo text-amber-50 dark:text-zinc-50 mb-2">
+                            {card.title}
+                          </h1>
+                          {card.extra && (
+                            <h4 className="inter text-xs">{card.extra}</h4>
+                          )}
+                          <p className="text-zinc-700 dark:text-zinc-400 text-sm ml-2 mr-0.5">
+                            {card.description}
+                          </p>
+                        </div>
+                      </div>
+                    </Tilt>
+                  </Link>
+                ))}
+              </div>
             </div>
           </section>
         </InView>
@@ -112,8 +241,96 @@ export default function Home() {
           viewOptions={{ margin: "0px 0px -200px 0px" }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <section id="questions"></section>
+          <section id="reviews" className="p-20">
+            <div className="text-amber-50 text-center">
+              <h2 className="titulo mb-2.5 text-3xl">See our reviews</h2>
+              <h4 className="mb-6 text-lg">
+                Below you can check the reviews of some of our customers.
+              </h4>
+            </div>
+            <div className="">
+              <Cards />
+            </div>
+          </section>
         </InView>
+        <InView
+          variants={{
+            hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
+            visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+          }}
+          viewOptions={{ margin: "0px 0px -200px 0px" }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          <section id="faq" className="flex justify-center p-20">
+            <div className="text-amber-50 text-center">
+              <h2 className="titulo mb-2.5 text-3xl">
+                Do you have any question?
+              </h2>
+              <h4 className="mb-6 text-lg">
+                Below, you can see the most frequently asked questions.
+              </h4>
+              <div className="w-3xl border border-neutral-400/50 pl-7 pt-5 pb-5 pr-7 rounded-3xl">
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger>
+                      How can I buy a bot for Discord?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      Purchases can be made directly through our Discord. Just
+                      select the desired bot, open a TICKET, provide your
+                      request, and follow the instructions!
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-2">
+                    <AccordionTrigger>
+                      Is it possible to request a refund after purchase?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      We do not offer refunds after purchase, but we guarantee
+                      full support to resolve any issues you may encounter.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-3">
+                    <AccordionTrigger>
+                      Can I resell or distribute the purchased bots?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      Reselling or distributing the purchased bots is not
+                      allowed, according to the agreed terms of use.
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-4">
+                    <AccordionTrigger>
+                      What is the time frame for maintaining the budget and the
+                      amount paid?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      What is the time frame for maintaining the budget and the
+                      amount paid?
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="item-5">
+                    <AccordionTrigger>
+                      What are the copyright rights to the purchased bots?
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      Copyrights are reserved for the developer, but you will
+                      have full usage rights as per the contract terms.
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </div>
+            </div>
+          </section>
+        </InView>
+        <footer className="bg-stone-950/90 border-t border-white/[0.08]">
+          <div className="flex items-center text-center justify-center h-20 w-full m-6">
+            <TextRevealCard
+              text="© 2025 NTM DEV. All rights reserved. "
+              revealText="One Team. All You Need."
+            ></TextRevealCard>
+          </div>
+        </footer>
       </ClickSpark>
     </div>
   );

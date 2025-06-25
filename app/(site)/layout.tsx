@@ -3,7 +3,7 @@ import './styles/globals.css'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import Particles from "@/components/Particles/Particles";
 import Navbar from "@/components/ui/navbar";
-import Loader from '@/components/loader';
+import Loader from '@/components/ui/loader';
 import { Clock } from "@/components/ui/clock";;
 import { Github } from 'lucide-react';
 import Link from "next/link";
@@ -51,12 +51,12 @@ export default function SiteLayout({
             />
           </div>
           <header className='z-999 text-amber-50 grid '>
-            <div className='fixed top-10 left-10 z-50'>
+            <div className='cursor-none fixed top-10 left-10 z-50'>
               <Clock/>
             </div>
             <Navbar/>
             <div className="fixed top-10 right-10 z-50">
-              <Link href="https://github.com/ntm-dev-organization"  className='w-6 h-6 text-amber-50 hover:text-slate-300'>
+              <Link href="https://github.com/ntm-dev-organization"  className='cursor-none w-6 h-6 text-amber-50 hover:text-slate-300'>
                 <Github/>
               </Link>
             </div>
