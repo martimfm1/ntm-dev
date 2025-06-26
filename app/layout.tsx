@@ -32,8 +32,8 @@ export default function RootLayout({
           <div className="fixed top-0 left-0 w-full h-[140vh] -z-10">
             <Particles
               particleColors={["#ffffff", "#ffffff"]}
-              particleCount={900}
-              particleSpread={50}
+              particleCount={800}
+              particleSpread={20}
               speed={0.1}
               particleBaseSize={100}
               moveParticlesOnHover={false}

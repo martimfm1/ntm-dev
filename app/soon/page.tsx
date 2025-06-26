@@ -46,12 +46,12 @@ export default function Soon() {
                   </Button>
                 </div>
                 <div className="">
-                  <Button variant="secondary" className="cursor-pointer">
-                    <Link href="https://discord.gg/aKpwVrXgyx">
+                  <Button variant="secondary" className="cursor-pointer" asChild>
+                    <Link href="https://discord.gg/aKpwVrXgyx" className="flex items-center gap-2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
+                        width="8"
+                        height="8"
                         fill="currentColor"
                         className="bi bi-discord"
                         viewBox="0 0 16 16"

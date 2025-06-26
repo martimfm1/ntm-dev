@@ -3,7 +3,7 @@ import { TextLoop } from "@/components/ui/text-loop";
 import { Cursor } from "@/components/ui/cursor";
 import { AnimatePresence, motion } from "motion/react";
 import { PlusIcon } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import ClickSpark from "@/components/ClickSpark/ClickSpark";
 import { InView } from "@/components/ui/in-view";
@@ -17,9 +17,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  TextRevealCard
-} from "@/components/ui/text-reveal-card";
+import { TextRevealCard } from "@/components/ui/text-reveal-card";
 
 export default function Home() {
   const [isHovering, setIsHovering] = useState(false);

@@ -1,15 +1,26 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./button";
 import { Menu, X } from "lucide-react";
-import StarBorder from "@/components/StarBorder/StarBorder";
+import {
+  Dialog,
+  DialogDescription,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Variants, Transition } from "motion/react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [user, setUser] = useState<{ username: string; avatar: string } | null>(null);
+  const [user, setUser] = useState<{ username: string; avatar: string } | null>(
+    null
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -20,6 +31,24 @@ export default function Navbar() {
     fetchUser();
   }, []);
 
+  const customVariants: Variants = {
+    initial: {
+      scale: 0.9,
+      filter: "blur(10px)",
+      y: "100%",
+    },
+    animate: {
+      scale: 1,
+      filter: "blur(0px)",
+      y: 0,
+    },
+  };
+
+  const customTransition: Transition = {
+    type: "spring",
+    bounce: 0,
+    duration: 0.4,
+  };
 
   return (
     <nav className="fixed top-5 left-1/2 transform -translate-x-1/2 z-10 bg-white/10 backdrop-blur-md shadow-lg rounded-full px-6 py-2 flex items-center justify-between w-[100%] max-w-3xl">
@@ -57,21 +86,38 @@ export default function Navbar() {
       </div>
       <div className="hidden md:flex items-center">
         {user ? (
-          <Link href="">
-            <Image
-              src={user.avatar}
-              alt={user.username}
-              width={36}
-              height={36}
-              className="rounded-full border border-white hover:opacity-80 transition"
-            />
-          </Link>
+          <Dialog variants={customVariants} transition={customTransition} className="text-amber-50">
+            <DialogTrigger>
+              <Link href="">
+                <Image
+                  src={user.avatar}
+                  alt={user.username}
+                  width={36}
+                  height={36}
+                  className="rounded-full border border-white hover:opacity-80 transition"
+                />
+              </Link>
+            </DialogTrigger>
+            <DialogContent className="w-full max-w-md bg-stone-950/70 backdrop:blur-xs">
+              <DialogHeader>
+                <DialogTitle className="text-amber-50 dark:text-white p-4 titulo">
+                  Account
+                </DialogTitle>
+              </DialogHeader>
+              <div className="w-30 flex flex-col space-y-4 p-5">
+                <Button variant="destructive" className="cursor-pointer">
+                  <a href="" className="titulo">Logout</a>
+                </Button>
+              </div>
+              <DialogClose className="cursor-pointer !text-amber-50"/>
+            </DialogContent>
+          </Dialog>
         ) : (
-          <StarBorder as="button" color="white" speed="5s">
-            <Button variant="signin">
-              <a href="/soon" className="text-slate-950 font-medium">Sign In</a>
-            </Button>
-          </StarBorder>
+          <Button variant="signin">
+            <a href="/api/login" className="text-slate-950 font-medium">
+              Sign In
+            </a>
+          </Button>
         )}
       </div>
 

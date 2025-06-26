@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState, memo } from "react";
 import { motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 import { cn } from "@/lib/utils";
-import '@/app/(site)/styles/globals.css'
+import "@/app/(site)/styles/globals.css";
 
 export const TextRevealCard = ({
   text,
@@ -17,7 +17,7 @@ export const TextRevealCard = ({
   className?: string;
 }) => {
   const [widthPercentage, setWidthPercentage] = useState(0);
-  const cardRef = useRef<HTMLDivElement | any>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const [left, setLeft] = useState(0);
   const [localWidth, setLocalWidth] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
@@ -31,7 +31,7 @@ export const TextRevealCard = ({
     }
   }, []);
 
-  function mouseMoveHandler(event: any) {
+  function mouseMoveHandler(event: React.MouseEvent<HTMLDivElement>) {
     event.preventDefault();
 
     const { clientX } = event;
@@ -67,10 +67,7 @@ export const TextRevealCard = ({
       onTouchEnd={mouseLeaveHandler}
       onTouchMove={touchMoveHandler}
       ref={cardRef}
-      className={cn(
-        "text-center w-90 relative overflow-hidden",
-        className
-      )}
+      className={cn("text-center w-90 relative overflow-hidden", className)}
     >
       {children}
 
