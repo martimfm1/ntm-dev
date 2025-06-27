@@ -18,6 +18,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { TextRevealCard } from "@/components/ui/text-reveal-card";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
   const [isHovering, setIsHovering] = useState(false);
@@ -33,6 +35,8 @@ export default function Home() {
   };
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
+      <SpeedInsights/>
+      <Analytics/>
       <Cursor
         attachToParent
         variants={{
