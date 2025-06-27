@@ -7,7 +7,6 @@ import { Button } from "./button";
 import { Menu, X } from "lucide-react";
 import {
   Dialog,
-  DialogDescription,
   DialogContent,
   DialogHeader,
   DialogTitle,

@@ -196,34 +196,34 @@ export default function Home() {
                     link: "https://discord.com/channels/1290074291047632919/1312904181446738123",
                   },
                 ].map((card, i) => (
-                  <Link
-                    key={i}
-                    href={card.link}
-                    className="hover:scale-[1.01] transition-transform duration-200 cursor-none"
-                  >
-                    <Tilt rotationFactor={8} isRevese>
-                      <div className="border rounded-2xl h-82 flex max-w-[270px] flex-col overflow-hidden border-neutral-400/50 bg-transparent dark:border-zinc-50/10 dark:bg-zinc-900">
-                        <div className="rounded-full flex justify-center items-center mt-4 mb-2 h-32">
-                          <img
-                            src={card.image}
-                            alt={card.title}
-                            className="w-36"
-                          />
+                    <Link
+                      key={i}
+                      href={card.link}
+                      className="hover:scale-[1.01] transition-transform duration-200 cursor-none"
+                    >
+                      <Tilt rotationFactor={8} isRevese key={1}>
+                        <div className="border rounded-2xl h-82 flex max-w-[270px] flex-col overflow-hidden border-neutral-400/50 bg-transparent dark:border-zinc-50/10 dark:bg-zinc-900">
+                          <div className="rounded-full flex justify-center items-center mt-4 mb-2 h-32">
+                            <img
+                              src={card.image}
+                              alt={card.title}
+                              className="w-36"
+                            />
+                          </div>
+                          <div className="p-2 text-center">
+                            <h1 className="titulo text-amber-50 dark:text-zinc-50 mb-2">
+                              {card.title}
+                            </h1>
+                            {card.extra && (
+                              <h4 className="inter text-xs">{card.extra}</h4>
+                            )}
+                            <p className="text-zinc-700 dark:text-zinc-400 text-sm ml-2 mr-0.5">
+                              {card.description}
+                            </p>
+                          </div>
                         </div>
-                        <div className="p-2 text-center">
-                          <h1 className="titulo text-amber-50 dark:text-zinc-50 mb-2">
-                            {card.title}
-                          </h1>
-                          {card.extra && (
-                            <h4 className="inter text-xs">{card.extra}</h4>
-                          )}
-                          <p className="text-zinc-700 dark:text-zinc-400 text-sm ml-2 mr-0.5">
-                            {card.description}
-                          </p>
-                        </div>
-                      </div>
-                    </Tilt>
-                  </Link>
+                      </Tilt>
+                    </Link>
                 ))}
               </div>
             </div>
