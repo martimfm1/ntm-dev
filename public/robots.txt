@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.ntmdev.me
+
+# Sitemaps
+Sitemap: https://www.ntmdev.me/sitemap.xml
