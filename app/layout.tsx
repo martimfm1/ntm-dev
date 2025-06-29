@@ -3,11 +3,27 @@ import { Inter, Space_Grotesk } from "next/font/google";
 
 export const metadata = {
   title: 'NTM DEV | Quality Bots',
-  description: 'NTM DEV',
+  description: 'Creation of custom Discord bots, static websites and full-stack solutions. Complete packs for your online store.',
   icons: {
-    icon: './favicon.png',
+    icon: '/favicon.png',
   },
-}
+  openGraph: {
+    title: 'NTM DEV | Quality Bots',
+    description: 'Digital solutions — Bots and Web.',
+    url: 'https://www.ntmdev.me',
+    siteName: 'NTM Dev',
+    images: [
+      {
+        url: 'https://www.ntmdev.me/favicon.png',
+        width: 1200,
+        height: 630,
+        alt: 'NTM DEV Preview Image',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+};
 
 const inter = Inter({
   subsets: ['latin'],
