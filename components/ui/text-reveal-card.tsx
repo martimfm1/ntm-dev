@@ -71,7 +71,7 @@ export const TextRevealCard = ({
     >
       {children}
 
-      <div className="h-40  relative flex items-center overflow-hidden">
+<div className="h-28 sm:h-32 md:h-36 lg:h-40 relative flex items-center overflow-hidden">
         <motion.div
           style={{
             width: "100%",

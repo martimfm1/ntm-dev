@@ -18,8 +18,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { TextRevealCard } from "@/components/ui/text-reveal-card";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function Home() {
   const [isHovering, setIsHovering] = useState(false);
@@ -35,8 +35,8 @@ export default function Home() {
   };
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
-      <SpeedInsights/>
-      <Analytics/>
+      <SpeedInsights />
+      <Analytics />
       <Cursor
         attachToParent
         variants={{
@@ -97,10 +97,10 @@ export default function Home() {
             className="flex items-center justify-center min-h-screen px-4 sm:px-6 bg-transparent bg-gradient-to-b from-slate-950/50 via-slate-950/30 to-transparent"
           >
             <div className="text-center w-full max-w-4xl py-10">
-              <h4 className="text-slate-400 uppercase tracking-wide text-base sm:text-lg md:text-xl mb-4 font-semibold">
+              <h4 className="text-slate-400 uppercase tracking-wide text-sm sm:text-lg md:text-xl mb-4 font-semibold">
                 By the creators of NTM DEV
               </h4>
-              <h1 className="text-slate-200 whitespace-pre-wrap text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 titulo">
+              <h1 className="text-slate-200 whitespace-pre-wrap text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-6 titulo">
                 Get your BOT <br />
                 <TextLoop
                   className="overflow-y-clip loop font-normal"
@@ -138,7 +138,7 @@ export default function Home() {
                   <span>With Lifetime Support.</span>
                 </TextLoop>
               </h1>
-              <p className="mt-4 text-gray-400 text-sm sm:text-base md:text-lg max-w-xl mx-auto mb-10">
+              <p className="text-gray-400 text-xs sm:text-base md:text-lg max-w-xl mb-10 px-4 text-center mx-auto">
                 Discord bots skillfully designed and crafted by NTM DEV
                 creators. The perfect team to develop your BOT.
               </p>
@@ -155,7 +155,7 @@ export default function Home() {
         >
           <section
             id="bots"
-            className="flex justify-center p-20 gap-6 relative"
+            className="flex justify-center gap-6 relative pb-20 pt-20 pl-10 pr-10"
           >
             <div className="text-amber-50 text-center">
               <h2 className="titulo mb-2.5 text-3xl">Discover our BOTs</h2>
@@ -171,7 +171,7 @@ export default function Home() {
               </h4>
 
               <div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 place-items-center"
                 ref={targetRef}
               >
                 {[
@@ -200,34 +200,34 @@ export default function Home() {
                     link: "https://discord.com/channels/1290074291047632919/1312904181446738123",
                   },
                 ].map((card, i) => (
-                    <Link
-                      key={i}
-                      href={card.link}
-                      className="hover:scale-[1.01] transition-transform duration-200 cursor-none"
-                    >
-                      <Tilt rotationFactor={8} isRevese key={1}>
-                        <div className="border rounded-2xl h-82 flex max-w-[270px] flex-col overflow-hidden border-neutral-400/50 bg-transparent dark:border-zinc-50/10 dark:bg-zinc-900">
-                          <div className="rounded-full flex justify-center items-center mt-4 mb-2 h-32">
-                            <img
-                              src={card.image}
-                              alt={card.title}
-                              className="w-36"
-                            />
-                          </div>
-                          <div className="p-2 text-center">
-                            <h1 className="titulo text-amber-50 dark:text-zinc-50 mb-2">
-                              {card.title}
-                            </h1>
-                            {card.extra && (
-                              <h4 className="inter text-xs">{card.extra}</h4>
-                            )}
-                            <p className="text-zinc-700 dark:text-zinc-400 text-sm ml-2 mr-0.5">
-                              {card.description}
-                            </p>
-                          </div>
+                  <Link
+                    key={i}
+                    href={card.link}
+                    className="hover:scale-[1.01] transition-transform duration-200 cursor-none"
+                  >
+                    <Tilt rotationFactor={8} isRevese key={1}>
+                      <div className="border rounded-2xl h-[340px] md:h-[360px] flex max-w-[250px] md:max-w-[270px] flex-col overflow-hidden border-neutral-400/60 bg-transparent dark:bg-zinc-900">
+                        <div className="rounded-full flex justify-center items-center mt-4 mb-2 h-32">
+                          <img
+                            src={card.image}
+                            alt={card.title}
+                            className="w-28 md:w-36"
+                          />
                         </div>
-                      </Tilt>
-                    </Link>
+                        <div className="p-2 text-center">
+                          <h1 className="titulo text-amber-50 dark:text-zinc-50 mb-2">
+                            {card.title}
+                          </h1>
+                          {card.extra && (
+                            <h4 className="inter text-xs">{card.extra}</h4>
+                          )}
+                          <p className="text-zinc-700 dark:text-zinc-400 text-sm ml-2 mr-0.5">
+                            {card.description}
+                          </p>
+                        </div>
+                      </div>
+                    </Tilt>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -241,14 +241,14 @@ export default function Home() {
           viewOptions={{ margin: "0px 0px -200px 0px" }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <section id="reviews" className="p-20">
-            <div className="text-amber-50 text-center">
+          <section id="reviews" className="pb-20 pt-20">
+            <div className="text-amber-50 text-center p-10">
               <h2 className="titulo mb-2.5 text-3xl">See our reviews</h2>
               <h4 className="mb-6 text-lg">
                 Below you can check the reviews of some of our customers.
               </h4>
             </div>
-            <div className="">
+            <div>
               <Cards />
             </div>
           </section>
@@ -261,7 +261,10 @@ export default function Home() {
           viewOptions={{ margin: "0px 0px -200px 0px" }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <section id="faq" className="flex justify-center p-20">
+          <section
+            id="faq"
+            className="flex justify-center pt-20 pb-20 pl-10 pr-10"
+          >
             <div className="text-amber-50 text-center">
               <h2 className="titulo mb-2.5 text-3xl">
                 Do you have any question?
@@ -269,7 +272,7 @@ export default function Home() {
               <h4 className="mb-6 text-lg">
                 Below, you can see the most frequently asked questions.
               </h4>
-              <div className="w-3xl border border-neutral-400/50 pl-7 pt-5 pb-5 pr-7 rounded-3xl">
+              <div className="w-full max-w-md sm:max-w-lg md:max-w-xl border border-neutral-400/50 px-4 sm:px-6 py-5 rounded-3xl mx-auto">
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
                     <AccordionTrigger>
@@ -324,11 +327,15 @@ export default function Home() {
           </section>
         </InView>
         <footer className="bg-stone-950/90 border-t border-white/[0.08]">
-          <div className="flex items-center text-center justify-center h-20 w-full m-6">
+          <div
+            className="flex items-center text-center justify-center 
+                  h-16 sm:h-14 md:h-16 lg:h-20 
+                  w-full m-3 sm:m-2 md:m-3 lg:m-6"
+          >
             <TextRevealCard
-              text="© 2025 NTM DEV. All rights reserved. "
+              text="© 2025 NTM DEV. All rights reserved."
               revealText="One Team. All You Need."
-            ></TextRevealCard>
+            />
           </div>
         </footer>
       </ClickSpark>

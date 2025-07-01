@@ -4,7 +4,15 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./button";
-import { Menu, X, House, Star, Bot, MessageCircle, CircleUser } from "lucide-react";
+import {
+  Menu,
+  X,
+  House,
+  Star,
+  Bot,
+  MessageCircle,
+  CircleUser,
+} from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -50,7 +58,7 @@ export default function Navbar() {
   };
 
   return (
-<nav className="fixed top-5 inset-x-5 md:left-1/2 md:-translate-x-1/2 z-10 bg-white/10 backdrop-blur-md shadow-lg rounded-full px-6 py-2 flex items-center justify-between w-[calc(100%-2.5rem)] md:w-[100%] max-w-3xl">
+    <nav className="fixed top-5 inset-x-5 md:left-1/2 md:-translate-x-1/2 z-10 bg-white/10 backdrop-blur-md shadow-lg rounded-full px-6 py-2 flex items-center justify-between w-[calc(100%-2.5rem)] md:w-[100%] max-w-3xl">
       {/* Logo */}
       <div className="flex items-center gap-3 flex-shrink-0">
         <Image
@@ -89,7 +97,11 @@ export default function Navbar() {
       {/* User desktop */}
       <div className="hidden md:flex items-center">
         {user ? (
-          <Dialog variants={customVariants} transition={customTransition} className="text-amber-50">
+          <Dialog
+            variants={customVariants}
+            transition={customTransition}
+            className="text-amber-50"
+          >
             <DialogTrigger>
               <Link href="">
                 <Image
@@ -108,8 +120,13 @@ export default function Navbar() {
                   Account
                 </DialogTitle>
               </DialogHeader>
-              <div className="w-30 flex flex-col space-y-4 p-5">
-                <Button variant="destructive" className="cursor-pointer w-full">
+              <div className="w-full flex justify-between p-5">
+                <Button variant="secondary">
+                  <a href="/api/discord" className="titulo">
+                    Discord
+                  </a>
+                </Button>
+                <Button variant="destructive">
                   <a href="/api/logout" className="titulo">
                     Logout
                   </a>
@@ -121,7 +138,7 @@ export default function Navbar() {
         ) : (
           <Button variant="signin">
             <Link
-              href="/discord/login"
+              href="/api/login"
               className="flex items-center gap-2 text-slate-950 font-medium"
             >
               Sign In
@@ -142,7 +159,7 @@ export default function Navbar() {
         <div className="absolute top-full mt-2 right-0 w-full bg-white/10 backdrop-blur-md rounded-xl py-4 px-6 flex flex-col items-start md:hidden">
           <Link
             href="/"
-            className="flex items-center gap-2 text-slate-200 p-3 w-full"
+            className="flex items-center gap-2 text-slate-200 p-3 w-full hover:text-neutral-400"
             onClick={() => setIsOpen(false)}
           >
             <House />
@@ -150,7 +167,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/soon"
-            className="flex items-center gap-2 text-slate-200 p-3 w-full"
+            className="flex items-center gap-2 text-slate-200 p-3 w-full hover:text-neutral-400"
             onClick={() => setIsOpen(false)}
           >
             <Bot />
@@ -158,7 +175,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/#reviews"
-            className="flex items-center gap-2 text-slate-200 p-3 w-full"
+            className="flex items-center gap-2 text-slate-200 p-3 w-full hover:text-neutral-400"
             onClick={() => setIsOpen(false)}
           >
             <Star />
@@ -166,7 +183,7 @@ export default function Navbar() {
           </Link>
           <Link
             href="/#faq"
-            className="flex items-center gap-2 text-slate-200 p-3 w-full"
+            className="flex items-center gap-2 text-slate-200 p-3 w-full hover:text-neutral-400"
             onClick={() => setIsOpen(false)}
           >
             <MessageCircle />
@@ -184,7 +201,7 @@ export default function Navbar() {
             >
               <DialogTrigger>
                 <button
-                  className="flex items-center gap-2 text-slate-200 p-3 font-semibold cursor-pointer w-full"
+                  className="flex items-center gap-2 text-slate-200 p-2 font-semibold cursor-pointer w-full hover:text-neutral-400"
                   aria-label="Account menu"
                 >
                   <Image
@@ -205,7 +222,10 @@ export default function Navbar() {
                   </DialogTitle>
                 </DialogHeader>
                 <div className="w-30 flex flex-col space-y-4 p-5">
-                  <Button variant="destructive" className="cursor-pointer w-full">
+                  <Button
+                    variant="destructive"
+                    className="cursor-pointer w-full"
+                  >
                     <a href="/api/logout" className="titulo">
                       Logout
                     </a>
@@ -217,7 +237,7 @@ export default function Navbar() {
           ) : (
             <Link
               href="/api/login"
-              className="flex items-center gap-2 text-slate-200 p-3 font-semibold"
+              className="flex items-center gap-2 text-slate-200 p-3 font-semibold hover:text-neutral-400"
               onClick={() => setIsOpen(false)}
             >
               <CircleUser />
