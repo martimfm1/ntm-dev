@@ -122,7 +122,7 @@ export default function Navbar() {
               </DialogHeader>
               <div className="w-full flex justify-between p-5">
                 <Button variant="secondary">
-                  <a href="/api/discord" className="titulo">
+                  <a href="/soon" className="titulo">
                     Discord
                   </a>
                 </Button>

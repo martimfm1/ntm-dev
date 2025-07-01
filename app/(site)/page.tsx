@@ -272,7 +272,8 @@ export default function Home() {
               <h4 className="mb-6 text-lg">
                 Below, you can see the most frequently asked questions.
               </h4>
-              <div className="w-full max-w-md sm:max-w-lg md:max-w-xl border border-neutral-400/50 px-4 sm:px-6 py-5 rounded-3xl mx-auto">
+              <div className="w-full min-w-lg sm:max-w-lg md:max-w-xl lg:max-w-3xl border border-neutral-400/50 px-4 sm:px-6 py-5 rounded-3xl mx-auto">
+
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
                     <AccordionTrigger>
