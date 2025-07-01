@@ -9,7 +9,7 @@ export async function GET() {
   response.cookies.set("discord_user", "", {
     path: "/",
     maxAge: 0,
-    httpOnly: false, // igual ao que definiste no login
+    httpOnly: false,
     sameSite: "lax",
   });
 

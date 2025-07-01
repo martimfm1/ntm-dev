@@ -36,7 +36,6 @@ export async function GET(req: Request) {
   const tokenData = await tokenResponse.json();
   const access_token = tokenData.access_token;
 
-  // Buscar dados do usuário
   const userResponse = await fetch("https://discord.com/api/users/@me", {
     headers: { Authorization: `Bearer ${access_token}` },
   });
@@ -64,7 +63,6 @@ export async function GET(req: Request) {
     }
   );
 
-  // Usar URL absoluta no redirect
   const response = NextResponse.redirect(BASE_URL);
 
   response.headers.append("Set-Cookie", cookieSerialized);
