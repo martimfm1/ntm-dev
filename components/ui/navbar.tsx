@@ -70,7 +70,7 @@ export default function Navbar() {
           </Link>
         </Button>
         <Button variant="link">
-          <Link href="/products" className="text-slate-200 font-medium">
+          <Link href="/soon" className="text-slate-200 font-medium">
             Products
           </Link>
         </Button>
@@ -124,7 +124,6 @@ export default function Navbar() {
               href="/discord/login"
               className="flex items-center gap-2 text-slate-950 font-medium"
             >
-              <CircleUser />
               Sign In
             </Link>
           </Button>
@@ -142,7 +141,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="absolute top-full mt-2 right-0 w-full bg-white/10 backdrop-blur-md rounded-xl py-4 px-6 flex flex-col items-start md:hidden">
           <Link
-            href="#home"
+            href="/"
             className="flex items-center gap-2 text-slate-200 p-3 w-full"
             onClick={() => setIsOpen(false)}
           >
@@ -150,15 +149,15 @@ export default function Navbar() {
             Home
           </Link>
           <Link
-            href="#bots"
+            href="/soon"
             className="flex items-center gap-2 text-slate-200 p-3 w-full"
             onClick={() => setIsOpen(false)}
           >
             <Bot />
-            Bots
+            Products
           </Link>
           <Link
-            href="#avaliacoes"
+            href="/#reviews"
             className="flex items-center gap-2 text-slate-200 p-3 w-full"
             onClick={() => setIsOpen(false)}
           >
@@ -166,7 +165,7 @@ export default function Navbar() {
             Reviews
           </Link>
           <Link
-            href="#faq"
+            href="/#faq"
             className="flex items-center gap-2 text-slate-200 p-3 w-full"
             onClick={() => setIsOpen(false)}
           >
@@ -185,7 +184,7 @@ export default function Navbar() {
             >
               <DialogTrigger>
                 <button
-                  className="flex items-center gap-2 text-slate-200 pt-2 font-semibold cursor-pointer w-full"
+                  className="flex items-center gap-2 text-slate-200 p-3 font-semibold cursor-pointer w-full"
                   aria-label="Account menu"
                 >
                   <Image
@@ -218,7 +217,7 @@ export default function Navbar() {
           ) : (
             <Link
               href="/api/login"
-              className="flex items-center gap-2 text-slate-200 pt-2 font-semibold"
+              className="flex items-center gap-2 text-slate-200 p-3 font-semibold"
               onClick={() => setIsOpen(false)}
             >
               <CircleUser />
