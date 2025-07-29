@@ -43,20 +43,20 @@ export default function SiteLayout({
               particleSpread={10}
               speed={0.1}
               particleBaseSize={100}
-              moveParticlesOnHover={false}
+              moveParticlesOnHover={true}
               alphaParticles={true}
               disableRotation={false}
             />
           </div>
           <header className="z-999 text-amber-50 grid">
-            <div className="cursor-none fixed top-10 left-10 z-50 hidden lg:block">
+            <div className="fixed top-10 left-10 z-50 hidden lg:block">
               <Clock />
             </div>
             <Navbar/>
             <div className="fixed top-10 right-10 z-50 hidden lg:block">
               <Link
                 href="https://github.com/ntm-dev-organization"
-                className="cursor-none w-6 h-6 text-amber-50 hover:text-slate-300"
+                className=" w-6 h-6 text-amber-50 hover:text-slate-300"
               >
                 <Github />
               </Link>

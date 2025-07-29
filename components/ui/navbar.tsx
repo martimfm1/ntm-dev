@@ -78,7 +78,7 @@ export default function Navbar() {
           </Link>
         </Button>
         <Button variant="link">
-          <Link href="/soon" className="text-slate-200 font-medium">
+          <Link href="/products" className="text-slate-200 font-medium">
             Products
           </Link>
         </Button>

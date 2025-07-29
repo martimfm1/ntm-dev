@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BOT_TOKEN = os.getenv('Token_bot')
+BOT_TOKEN = os.getenv('Token_bot') #put your token here or in a .env file
 USER_ID = int(input('Id - '))
 
 def get_user_avatar(user_id):
@@ -29,6 +29,5 @@ def get_user_avatar(user_id):
 
     return avatar_url
 
-# Exemplo de uso
 avatar = get_user_avatar(USER_ID)
 print("Avatar URL:", avatar)
